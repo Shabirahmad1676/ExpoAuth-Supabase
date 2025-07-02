@@ -3,6 +3,7 @@
     "name": "expo-user-management",
     "slug": "expo-user-management",
     "version": "1.0.0",
+     "scheme": "expo-user-managment",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -23,10 +24,12 @@
       "edgeToEdgeEnabled": true
     },
     "web": {
+      "bundler": "metro",
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-web-browser"
+      "expo-web-browser",
+      "expo-router"
     ]
   }
 }

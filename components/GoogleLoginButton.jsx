@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Alert } from 'react-native';
 import * as AuthSession from 'expo-auth-session';
 import { supabase } from '../utils/supabase';
 
 const GoogleLoginButton = () => {
-  const handleGoogleLogin = async () => {
-    const redirectTo = AuthSession.makeRedirectUri({ useProxy: true });
+  const redirectTo = AuthSession.makeRedirectUri({ useProxy: true });
 
-    const { error } = await supabase.auth.signInWithOAuth({
+  const handleGoogleLogin = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: { redirectTo },
     });
@@ -15,10 +15,11 @@ const GoogleLoginButton = () => {
     if (error) {
       Alert.alert('OAuth Error', error.message);
     }
-    // Navigation should be handled by your main app logic after session changes
   };
+  console.log("URL IS THIS to redirect to",AuthSession.makeRedirectUri({ useProxy: true }));//exp://192.168.1.6:8081
 
-  return <Button title="Sign in with Google" onPress={handleGoogleLogin} />;
+
+  return <Button  title="Sign in with Google" onPress={handleGoogleLogin} />;
 };
 
 export default GoogleLoginButton;
