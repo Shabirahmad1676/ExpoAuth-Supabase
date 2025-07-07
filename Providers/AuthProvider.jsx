@@ -42,6 +42,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
 
+  //sign In and sign up functionality is here
   const handleAuth = async () => {
     setMessage('');
 
@@ -76,7 +77,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ session,
+    <AuthContext.Provider value={{ 
+        session,
         userName,
         signOut,
         email, setEmail,

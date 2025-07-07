@@ -31,8 +31,11 @@ export default function AuthScreen() {
 
   // ✅ Redirect to home if logged in
   if (session) {
+    console.log("session in SignIn Page",session)
+
     return <Redirect href="/" />;
   }
+
 
   return (
     <View style={styles.container}>
@@ -86,12 +89,12 @@ export default function AuthScreen() {
           </Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={() => router.push('/ForgetPass')}>
-  <Text style={{color:'blue'}}>Forgot Password?</Text>
+      <TouchableOpacity onPress={() => router.push('/ForgotPassword')}>
+  <Text style={{color:'blue'}}>{isLogin ? 'Forgot Password?':''}</Text>
 </TouchableOpacity>
 
 
-      {message ? <Text style={styles.message}>{message}</Text> : null}
+      {message ? <Text style={styles.message}>{message}</Text> : null} 
 
       <GoogleLoginButton />
     </View>

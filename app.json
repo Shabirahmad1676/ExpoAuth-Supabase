@@ -3,7 +3,7 @@
     "name": "expo-user-management",
     "slug": "expo-user-management",
     "version": "1.0.0",
-     "scheme": "expo-user-managment",
+    "scheme": "expo-user-management",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,15 +21,24 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "data": [
+            {
+              "scheme": "expo-user-management",
+              "host": "*"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
     },
     "web": {
       "bundler": "metro",
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "expo-web-browser",
-      "expo-router"
-    ]
+    "plugins": ["expo-web-browser", "expo-router"]
   }
 }
