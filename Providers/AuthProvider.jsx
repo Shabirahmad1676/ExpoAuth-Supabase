@@ -13,6 +13,9 @@ export const AuthProvider = ({ children }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [message, setMessage] = useState('');
 
+  const user = session?.user || null;
+
+
   useEffect(() => {
     const initSession = async () => {
       const {
@@ -80,6 +83,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={{ 
         session,
         userName,
+        user,
         signOut,
         email, setEmail,
         password, setPassword,
