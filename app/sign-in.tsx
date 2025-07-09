@@ -31,7 +31,7 @@ export default function AuthScreen() {
 
   // ✅ Redirect to home if logged in
   if (session) {
-    console.log("session in SignIn Page",session)
+    // console.log("session in SignIn Page",session)
 
     return <Redirect href="/" />;
   }

@@ -1,7 +1,7 @@
 import { Tabs, Redirect } from 'expo-router';
 import { useAuth } from '../../Providers/AuthProvider';
 import { Text, TouchableOpacity } from 'react-native';
-import { Entypo, Ionicons, MaterialIcons } from '@expo/vector-icons'
+import { Entypo, FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons'
 
 
 export default function ProtectedLayout() {
@@ -22,15 +22,31 @@ export default function ProtectedLayout() {
           ),
         }}
       />
-      <Tabs.Screen
+       <Tabs.Screen
         name="realtime"
         options={{
           title: 'Realtime',
           tabBarIcon: ({ color, size }) => (
             <Text style={{ color, fontSize: size }}>⚡</Text>
           ),
-        }} 
+        }}  
       />
+
+      <Tabs.Screen
+      name="CameraScreen"
+      options={{
+          headerTitle: 'Capture the Moments',
+          tabBarIcon: ({ color, size }) => (
+             <Entypo  name="camera" size={30} color={'black'} />
+            
+          ),
+          headerRight: () => (
+            <TouchableOpacity onPress={signOut}>
+              <MaterialIcons  name="logout" size={30} color={'black'} />
+            </TouchableOpacity>
+          ),
+        }}
+      ></Tabs.Screen>
 
        <Tabs.Screen
         name="list"

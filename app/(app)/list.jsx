@@ -7,10 +7,21 @@ import { decode } from 'base64-arraybuffer'
 import { supabase } from '../../utils/supabase'
 import { useAuth } from '../../Providers/AuthProvider'
 import ImageItem from '../../components/ImageItem'
+import { useRouter, useLocalSearchParams } from 'expo-router'
 
 export default function list() {
   const { user } = useAuth()
+  const router = useRouter()
   const [files, setFiles] = useState([])
+  const { photo } = useLocalSearchParams()
+
+
+
+  useEffect(() => {
+  if (photo && photo.base64) {
+    uploadToSupabase(photo)
+  }
+}, [photo])
 
   useEffect(() => {
     if (!user) return
@@ -106,9 +117,14 @@ export default function list() {
 /> 
 
       {/* FAB to add images */}
-      <TouchableOpacity onPress={onSelectImage} style={styles.fab}>
+      {/* <TouchableOpacity onPress={onSelectImage} style={styles.fab}>
         <Ionicons name="camera-outline" size={30} color={'#fff'} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+
+      <TouchableOpacity onPress={() => router.push('/CameraScreen')} style={styles.fab}>
+  <Ionicons name="camera-outline" size={30} color={'#fff'} />
+</TouchableOpacity>
+
     </View>
   )
 }
